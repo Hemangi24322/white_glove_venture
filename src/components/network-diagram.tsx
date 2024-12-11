@@ -969,40 +969,39 @@ interface ConnectedEntitiesListProps {
 }
 
 function ConnectedEntitiesList({ links, selectedNode }: ConnectedEntitiesListProps) {
-  if (!selectedNode) return null;
+  const nodeToShow = selectedNode || entities.find(e => e.id === 'wgv')!;
 
   return (
-    <ul className="list-disc list-inside text-sm text-gray-600">
+    <div className="space-y-4">
       {links
         .filter(link => {
           const sourceId = typeof link.source === 'string' ? link.source : link.source.id;
           const targetId = typeof link.target === 'string' ? link.target : link.target.id;
-          return sourceId === selectedNode.id || targetId === selectedNode.id;
+          return sourceId === nodeToShow.id || targetId === nodeToShow.id;
         })
         .map((link, index) => {
           const connectedNode = (() => {
             if (typeof link.source === 'string') {
-              return link.source === selectedNode.id ? link.target : link.source;
+              return link.source === nodeToShow.id ? link.target : link.source;
             } else if (typeof link.target === 'string') {
-              return link.target === selectedNode.id ? link.source : link.target;
+              return link.target === nodeToShow.id ? link.source : link.target;
             } else {
-              return link.source.id === selectedNode.id ? link.target : link.source;
+              return link.source.id === nodeToShow.id ? link.target : link.source;
             }
           })();
 
           if (typeof connectedNode === 'string') return null;
 
           return (
-            <li key={index} className="mb-2">
-              <span className="font-medium">{connectedNode.name}</span>
-              <br />
-              <span className="text-xs">
-                Relationship: {selectedNode.type} to {connectedNode.type}
-              </span>
-            </li>
+            <div key={index} className="space-y-1">
+              <h4 className="text-lg font-medium text-gray-700">{connectedNode.name}</h4>
+              <p className="text-sm text-gray-600">
+                Relationship: {nodeToShow.type} to {connectedNode.type}
+              </p>
+            </div>
           );
         })}
-    </ul>
+    </div>
   );
 }
 
@@ -1011,8 +1010,7 @@ export default function NetworkDiagram() {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [animationIndex, setAnimationIndex] = useState(0);
-  const [selectedNode, setSelectedNode] = useState<Entity | null>(null);
-
+  const [selectedNode, setSelectedNode] = useState<Entity>(entities.find(e => e.id === 'wgv')!);
   useEffect(() => {
     if (!svgRef.current) return;
 
@@ -1126,8 +1124,8 @@ export default function NetworkDiagram() {
       })
       .on("mouseout", () => {
         setHoveredNode(null);
-        setSelectedNode(null);
         resetHighlight();
+        highlightConnections(selectedNode?.id || 'wgv');
       });
 
     function dragstarted(event: d3.D3DragEvent<SVGGElement, Entity, unknown>, d: Entity) {
@@ -1237,7 +1235,7 @@ export default function NetworkDiagram() {
           <h3 className="text-2xl font-bold tracking-tight mb-6">
             Entity Components Overview
           </h3>
-          {selectedNode ? (
+          {/* {selectedNode ? (
             <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="border-b border-gray-200 rounded-t-lg">
                 <CardTitle className="flex items-center text-lg text-black">
@@ -1262,7 +1260,31 @@ export default function NetworkDiagram() {
             <p className="text-sm text-gray-600">
               Hover over a node in the network map to see its connections and relationships.
             </p>
+          )} */}
+
+{selectedNode && (
+            <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardHeader className="border-b border-gray-200 rounded-t-lg">
+                <CardTitle className="flex items-center text-lg text-black">
+                {React.createElement(selectedNode?.icon, { className: "mr-2", size: 20 })}
+                {selectedNode.name}
+                </CardTitle>
+                <Badge
+                  variant="secondary"
+                  className="mt-2 bg-gray-100 text-gray-600"
+                >
+                  {selectedNode.type}
+                </Badge>
+              </CardHeader>
+              <CardContent>
+                <h4 className="font-semibold mb-2 text-black">
+                  Connected Entities:
+                </h4>
+                <ConnectedEntitiesList links={links} selectedNode={selectedNode} />
+              </CardContent>
+            </Card>
           )}
+
         </div>
       </div>
     </div>

@@ -244,7 +244,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -252,46 +252,81 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
+
 export default function HeroSection() {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Email submitted:', email);
-    setEmail('');
-  };
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage('')
+        setEmail('')
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [message])
+  
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  setIsSubmitting(true)
+
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'contact',
+        email
+      }).toString()
+    })
+
+    if (response.ok) {
+      setMessage('Thank You')
+      setEmail('')
+    } else {
+      throw new Error('Submission  failed')
+    }
+  } catch (error) {
+    setMessage('An error occurred. Please try again.')
+  } finally {
+    setIsSubmitting(false)
+  }
+}
 
   const startups = [
     {
       name: 'BlockChain UX',
       description: 'Blockchain Infrastructure ',
       tags: ['Seed', 'Blockchain'],
-      image: '/images/team/pawni.jpeg',
+      image: '/images/hero/BlockchainUX.png',
     },
     {
       name: 'AI',
       description: 'Artificial Intelligence ',
       tags: ['AI driven', ' Data Analytics '],
-      image: '/images/team/pawni.jpeg',
+      image: '/images/hero/AI.png',
     },
     
     {
       name: 'Privacy ',
       description: '',
       tags: ['ZK- Proofs', 'Data Protection '],
-      image: '/images/team/pawni.jpeg',
+      image: '/images/hero/privacy.png',
     },
     {
       name: 'DeFi',
       description: 'Decentralized Finance',
       tags: ['Decentralized', 'Financial Tools'],
-      image: '/images/team/pawni.jpeg',
+      image: '/images/hero/Defi.png',
     },
     {
       name: 'RAW',
       description: ' Real-World Asset Tokenization',
       tags: [' Asset Tokenization', 'Real Estate'],
-      image: '/images/team/pawni.jpeg',
+      image: '/images/hero/RAW.png',
     },
   ];
 
@@ -311,21 +346,33 @@ export default function HeroSection() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                className="bg-white text-black hover:bg-gray-200 text-lg py-6 px-8"
-                onClick={() => {
-                  const getInTouchSection =
-                    document.getElementById('get-in-touch');
-                  if (getInTouchSection) {
-                    getInTouchSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+               variant="outline"
+               className="bg-white text-black hover:bg-gray-200 text-lg py-6 px-8"
+               onClick={() => {
+                 const getInTouchSection =
+                   document.getElementById('get-in-touch');
+                   if (getInTouchSection) {
+                     getInTouchSection.scrollIntoView({ behavior: 'smooth' });
+                     const event = new CustomEvent('setActiveTab', { detail: 'startup' });
+                     document.dispatchEvent(event);
+                   }
+               }}
               >
                 Join Acceleration Program
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button
                 variant="outline"
-                className="text-white border-white hover:bg-gray-100 text-lg py-6 px-8"
+                className="bg-white text-black hover:bg-gray-200 text-lg py-6 px-8"
+                onClick={() => {
+                  const getInTouchSection =
+                    document.getElementById('get-in-touch');
+                    if (getInTouchSection) {
+                      getInTouchSection.scrollIntoView({ behavior: 'smooth' });
+                      const event = new CustomEvent('setActiveTab', { detail: 'vc' });
+                      document.dispatchEvent(event);
+                    }
+                }}
               >
                 Explore Deal Flow
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -345,7 +392,9 @@ export default function HeroSection() {
                 <Sparkles className="mr-2 h-5 w-5" /> Data-Driven Insights
               </Badge>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+
+
+            {/* <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
               <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
               <div className="flex gap-2">
                 <Input
@@ -362,7 +411,31 @@ export default function HeroSection() {
                   Subscribe
                 </Button>
               </div>
-            </form>
+            </form> */}
+
+<form name="contact" data-netlify="true" hidden>
+        <input type="email" name="email" />
+      </form>
+
+          <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4 max-w-md">
+                <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
+              <div className="flex gap-2">
+
+                    <Input type="email"  placeholder="Enter your email"
+                  className="flex-1 bg-black border-gray-800 text-white placeholder-gray-500" name="email" />
+               <Button type="submit" disabled={isSubmitting} className="bg-white text-black hover:bg-gray-200 whitespace-nowrap"> 
+               Subscribe
+
+               </Button>
+               
+               {message && (
+            <div className={`text-sm ${message.includes('successful') ? 'text-green-500' : 'text-red-500'}`}>
+               {message}
+              </div>
+            )}
+              </div>
+           </form>
+
           </div>
           <div className="lg:block relative">
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
@@ -382,9 +455,9 @@ export default function HeroSection() {
                             <Image
                              src={startup.image}
                               alt={startup.name}
-                              width={100}
-                              height={100}
-                              className="rounded-full object-cover"
+                              width={240}
+                              height={192}
+                              className="object-cover w-full h-full"
                             />
                           </div>
                           <div className="flex-1 p-4 flex flex-col justify-between">
@@ -423,9 +496,9 @@ export default function HeroSection() {
                             <Image
                              src={startup.image}
                               alt={startup.name}
-                               width={100}
-                               height={100}
-                                className="rounded-full object-cover"
+                               width={240}
+                               height={192}
+                                className="object-cover w-full h-full"
                             />
                           </div>
                           <div className="flex-1 p-4 flex flex-col justify-between">

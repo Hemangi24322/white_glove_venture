@@ -381,7 +381,8 @@ export default function IntroSection() {
         </div>
       </section>
 
-      <Card className="bg-gray-900 border-gray-800">
+    
+      <Card className="w-full max-w-7xl bg-gray-900 border-gray-800">
         <CardContent className="p-6 space-y-4">
           <h2 className="text-2xl font-bold text-white">
             Connected to over 100+ VCs and 100+ industry-leading protocols, our
@@ -389,13 +390,20 @@ export default function IntroSection() {
             partnerships, and opportunities to build and scale innovative
             products.
           </h2>
-          <Button variant="link" className="p-0 text-blue-500">
+          <Button variant="link" className="p-0 text-blue-500"
+           onClick={() => {
+            const RadioComponentSection =
+              document.getElementById('help');
+              if (RadioComponentSection) {
+                RadioComponentSection.scrollIntoView({ behavior: 'smooth' });
+              }
+          }}>
             Read more →
           </Button>
         </CardContent>
       </Card>
 
-      <section className="space-y-8">
+      {/* <section className="space-y-8">
         <h2 className="text-2xl font-bold">Our Leadership</h2>
         <div className="relative">
           <div
@@ -470,7 +478,7 @@ export default function IntroSection() {
             aria-hidden="true"
           />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

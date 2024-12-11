@@ -1,15 +1,15 @@
 'use client';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 export default function RadioComponent() {
-  const [userType, setUserType] = useState('');
+  const [userType, setUserType] = useState('startup');
   const [sector, setSector] = useState('');
-  const [stage, setStage] = useState('');
-  const [showResults, setShowResults] = useState(false);
+  const [stage, setStage] = useState('early');
+  const [showResults, setShowResults] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +33,10 @@ export default function RadioComponent() {
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto bg-white text-black">
+    <section id='help'>
+      
+<div className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
+    <Card  className="w-full max-w-4xl mx-auto bg-white text-black">
       <CardHeader>
         <CardTitle className="text-2xl font-bold">
           How can White Glove Ventures help you?
@@ -104,5 +107,7 @@ export default function RadioComponent() {
         </div>
       </CardContent>
     </Card>
+    </div>
+    </section>
   );
 }

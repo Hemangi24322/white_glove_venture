@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -22,26 +22,66 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageCircle } from 'lucide-react';
 
+
 export default function GetInTouch() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('startup')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted');
+  
+  useEffect(() => {
+    const handleSetActiveTab = (event: CustomEvent<string>) => {
+      setActiveTab(event.detail)
+    }
+
+    document.addEventListener('setActiveTab', handleSetActiveTab as EventListener)
+
+    return () => {
+      document.removeEventListener('setActiveTab', handleSetActiveTab as EventListener)
+    }
+  }, [])
+
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setIsSubmitting(true)
+
+    const form = event.target as HTMLFormElement
+    const formData = new FormData(form)
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString()
+      })
+
+      if (response.ok) {
+        // Handle successful submission
+        console.log('Thank you for your submission! We have received your details and will get back to you soon.')
+        form.reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   };
 
   return (
+    
     <section
       id="get-in-touch"
-      className="py-12 px-4 md:px-6 lg:px-8 bg-gray-950"
+      className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10"
     >
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-semibold tracking-tight text-white mb-8">
+        <h2 className="text-3xl font-semibold tracking-tight text-black mb-8">
           Get in Touch
         </h2>
 
-        <Tabs defaultValue="startup" className="mb-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="startup">For Startups</TabsTrigger>
             <TabsTrigger value="vc">For VCs</TabsTrigger>
@@ -56,12 +96,32 @@ export default function GetInTouch() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+
+              <form name="startup-form" data-netlify="true" hidden>
+        <input type="text" name="startup-name" />
+        <input type="text" name="funding-stage" />
+        <input type="text" name="market-focus" />
+        <input type="email" name="email" />
+        <textarea name="startup-message"></textarea>
+      </form>
+      <form name="vc-form" data-netlify="true" hidden>
+        <input type="text" name="vc-name" />
+        <input type="text" name="investment-stage" />
+        <input type="text" name="sector-focus" />
+        <input type="text" name="deal-size" />
+        <textarea name="vc-message"></textarea>
+      </form>
+
+
+                <form onSubmit={handleSubmit} className="space-y-4" name="startup-form" method="POST" data-netlify="true">
+                
+                <input type="hidden" name="form-name" value="startup-form" />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="startup-name">Startup Name</Label>
                       <Input
                         id="startup-name"
+                         name="startup-name"
                         placeholder="Enter your startup name"
                       />
                     </div>
@@ -69,7 +129,7 @@ export default function GetInTouch() {
                       <Label htmlFor="funding-stage">
                         Current Funding Stage
                       </Label>
-                      <Select>
+                      <Select name="funding-stage">
                         <SelectTrigger id="funding-stage">
                           <SelectValue placeholder="Select stage" />
                         </SelectTrigger>
@@ -86,6 +146,7 @@ export default function GetInTouch() {
                     <Label htmlFor="market-focus">Market Focus</Label>
                     <Input
                       id="market-focus"
+                       name="market-focus"
                       placeholder="E.g., FinTech, HealthTech, AI"
                     />
                   </div>
@@ -93,6 +154,7 @@ export default function GetInTouch() {
                     <Label htmlFor="email">Company Website</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="www.yourcompanyname.com"
                     />
@@ -103,11 +165,14 @@ export default function GetInTouch() {
                     </Label>
                     <Textarea
                       id="startup-message"
+                       name="startup-message"
                       placeholder="Tell us about your project&apos current stage"
                     />
                   </div>
-                  <Button type="submit">Submit Application</Button>
+                  <Button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit Inquiry'}</Button>
                 </form>
+
+
               </CardContent>
             </Card>
           </TabsContent>
@@ -121,12 +186,15 @@ export default function GetInTouch() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+
+                <form onSubmit={handleSubmit} className="space-y-4"name="vc-form" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="vc-form" />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="vc-name">VC Firm Name</Label>
                       <Input
                         id="vc-name"
+                        name="vc-name"
                         placeholder="Enter your VC firm name"
                       />
                     </div>
@@ -134,8 +202,8 @@ export default function GetInTouch() {
                       <Label htmlFor="investment-stage">
                         Investment Stage Focus
                       </Label>
-                      <Select>
-                        <SelectTrigger id="investment-stage">
+                      <Select name="investment-stage">
+                        <SelectTrigger id="investment-stage" >
                           <SelectValue placeholder="Select stage" />
                         </SelectTrigger>
                         <SelectContent>
@@ -151,21 +219,24 @@ export default function GetInTouch() {
                     <Label htmlFor="sector-focus">Sector Focus</Label>
                     <Input
                       id="sector-focus"
+                      name="sector-focus"
                       placeholder="E.g., Enterprise SaaS, Consumer Tech"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="deal-size">Typical Deal Size</Label>
-                    <Input id="deal-size" placeholder="E.g., $500K - $2M" />
+                    <Label htmlFor="deal-size" >Typical Deal Size</Label>
+                    <Input id="deal-size" name="deal-size"  placeholder="E.g., $500K - $2M" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="vc-message">Additional Information</Label>
                     <Textarea
-                      id="vc-message"
+                      id="vc-message"  name="vc-message"
                       placeholder="Tell us more about your investment thesis or any specific requests"
                     />
                   </div>
-                  <Button type="submit">Submit Inquiry</Button>
+                  <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
+        </Button>
                 </form>
               </CardContent>
             </Card>
