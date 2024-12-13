@@ -31,13 +31,46 @@
 
 // module.exports = nextConfig;
 
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+//   swcMinify: true,
+//   output: 'standalone',
+//   images: {
+//     domains: [], // Add any external domains if needed
+//     dangerouslyAllowSVG: true,
+//     contentDispositionType: 'attachment',
+//     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+//   },
+//   webpack: (config) => {
+//     config.module.rules.push({
+//       test: /\.ico$/,
+//       use: [
+//         {
+//           loader: 'file-loader',
+//           options: {
+//             name: '[name].[ext]',
+//           },
+//         },
+//       ],
+//     });
+//     return config;
+//   },
+// };
+
+// module.exports = nextConfig;
+
+
+//update
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  output: 'standalone',
+  experimental: {
+    swcMinify: true, // Canary versions often require experimental configurations here.
+  },
+  output: 'standalone', // Retain standalone output for Netlify deployment or serverless setups.
   images: {
-    domains: [], // Add any external domains if needed
+    domains: [], // Add any external image domains if needed.
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -59,4 +92,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
