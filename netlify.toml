@@ -11,3 +11,11 @@
   publish = ".next"
   framework = "nextjs"
 
+[functions]
+  included_files = ["server.js"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server"
+  status = 200
+
