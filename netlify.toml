@@ -3,7 +3,7 @@
   publish = ".next"
 
 [[plugins]]
-  package = "@opennextjs/netlify"
+  package ="@netlify/plugin-nextjs"
 
 [dev]
   command = "npm run dev"
