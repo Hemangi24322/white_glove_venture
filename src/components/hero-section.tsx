@@ -440,15 +440,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </form>
         */}
            
-           <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
-            <p hidden aria-hidden="true"><label><input name="bot-field"></input></label></p>
-  <input type="hidden" name="form-name" value="contact" />
-  <label>
-    Email: <input type="email" name="email" />
-  </label>
-  <button type="submit">Submit</button>
-</form>
-
+           <iframe className="airtable-embed" src="https://airtable.com/embed/appu63KaeaEVNI0PZ/pagoRDBmOx8c6ZzGK/form" width="100%" height="533" ></iframe>
 
           </div>
           <div className="lg:block relative">
