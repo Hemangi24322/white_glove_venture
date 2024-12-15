@@ -78,12 +78,10 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     // Only load the plugin on the server side (Netlify)
     if (isServer && process.env.NETLIFY) {
-      // Dynamically import the Netlify Next.js plugin
-      const netlifyPluginPromise = import('@netlify/plugin-nextjs');
-      netlifyPluginPromise.then((netlifyPlugin) => {
-        config.plugins.push(netlifyPlugin.default());
-      }).catch((error) => {
-        console.error('Failed to load @netlify/plugin-nextjs:', error);
+      // Add the Netlify Forms API integration
+      config.module.rules.push({
+        test: /\.js$/,
+        use: 'babel-loader',
       });
     }
 

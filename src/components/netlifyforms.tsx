@@ -109,13 +109,39 @@ const NetlifyForm: React.FC = () => {
     email: "",
     message: "",
   });
-
+  const [formStatus, setFormStatus] = useState('');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setFormStatus('Submitting...');
+
+    // Send the form data to the serverless function
+    try {
+      const response = await fetch('/api/contact-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setFormStatus('Form submitted successfully!');
+        setFormData({ name: '', email: '', message: '' }); // Reset form
+      } else {
+        setFormStatus(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      setFormStatus('Error submitting form.');
+    }
   };
 
   return (
