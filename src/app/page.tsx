@@ -7,6 +7,7 @@ import FAQ from '@/components/faq';
 import Quiz from '@/components/quiz';
 import GetInTouch from '@/components/get-in-touch';
 import Footer from '@/components/footer';
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300">

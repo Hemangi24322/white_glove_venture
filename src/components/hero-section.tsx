@@ -251,6 +251,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import ContactForm from './contactform';
+import NetlifyForm from './netlifyforms';
 
 
 export default function HeroSection() {
@@ -440,7 +442,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </form>
         */}
            
-           <iframe className="airtable-embed" src="https://airtable.com/embed/appu63KaeaEVNI0PZ/pagoRDBmOx8c6ZzGK/form" width="100%" height="533" ></iframe>
+           <NetlifyForm/>
 
           </div>
           <div className="lg:block relative">
