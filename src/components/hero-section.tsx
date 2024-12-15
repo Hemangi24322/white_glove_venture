@@ -442,7 +442,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </form>
         */}
            
-           <NetlifyForm/>
+          
+    <NetlifyForm/>
 
           </div>
           <div className="lg:block relative">
