@@ -1,8 +1,7 @@
 'use client'
 
-import Link from 'next/link';
+
 import { useState ,useEffect} from 'react'
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -17,7 +16,6 @@ import { Linkedin, Twitter, Mail,Send} from 'lucide-react';
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [openDialog, setOpenDialog] = useState<string | null>(null)
 
   useEffect(() => {
@@ -32,32 +30,7 @@ export default function Footer() {
   }, [message])
 
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
   
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          'form-name': 'contact',
-          email
-        }).toString()
-      })
-  
-      if (response.ok) {
-        setMessage('Thank You')
-        setEmail('')
-      } else {
-        throw new Error('Submission  failed')
-      }
-    } catch (error) {
-      setMessage('An error occurred. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
   
 
   const handleOpenDialog = (dialog: string) => {

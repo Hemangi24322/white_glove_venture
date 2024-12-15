@@ -17,7 +17,7 @@
 // };
 
 import { SimulationNodeDatum, SimulationLinkDatum } from 'd3-force';
-import { TypeIcon as type,type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from 'lucide-react';
 
 export interface Entity extends SimulationNodeDatum {
   id: string;
