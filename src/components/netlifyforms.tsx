@@ -123,7 +123,7 @@ const NetlifyForm: React.FC = () => {
 
     // Send the form data to the serverless function
     try {
-      const response = await fetch('/api/contact-form', {
+      const response = await fetch('/api/netlifyforms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

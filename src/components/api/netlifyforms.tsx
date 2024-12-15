@@ -1,6 +1,6 @@
-// pages/api/contact-form.js
 
-export default async function handler(req, res) {
+import { NextApiRequest, NextApiResponse } from 'next';
+export default async function handler( req: NextApiRequest, res: NextApiResponse) {
     // Handle only POST requests
     if (req.method === 'POST') {
       const { name, email, message } = req.body;
