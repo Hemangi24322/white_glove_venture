@@ -77,6 +77,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   webpack: (config) => {
+
+    if (process.env.NETLIFY) {
+      const netlifyPlugin = require('@netlify/plugin-nextjs');
+      config.plugins.push(netlifyPlugin());
+    }
     config.module.rules.push({
       test: /\.ico$/,
       use: [
@@ -89,10 +94,6 @@ const nextConfig = {
       ],
     });
 
-    if (process.env.NETLIFY) {
-      const netlifyPlugin = import('@netlify/plugin-nextjs');
-      config.plugins.push(netlifyPlugin());
-    }
     return config;
   },
 };
