@@ -88,6 +88,13 @@ const nextConfig = {
         },
       ],
     });
+
+    if (process.env.NETLIFY) {
+      config.plugins.push(
+        new (require('@netlify/plugin-nextjs'))()
+      );
+    }
+
     return config;
   },
 };
