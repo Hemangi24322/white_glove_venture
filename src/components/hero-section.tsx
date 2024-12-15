@@ -440,7 +440,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </form>
         */}
            
-             
+           <form name="contact" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="contact" />
+  <label>
+    Email: <input type="email" name="email" />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
 
           </div>
           <div className="lg:block relative">
