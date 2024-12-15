@@ -251,9 +251,9 @@ export default function Footer() {
               Sign up for exclusive deals and market insights.
             </p>
 
-            <form name="contact" data-netlify="true" hidden>
+            {/* <form name="contact" data-netlify="true" hidden>
         <input type="email" name="email" />
-      </form>
+      </form> */}
 
 
             {/* <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4 max-w-md">

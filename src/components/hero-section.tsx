@@ -428,7 +428,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         </div>
       </form> */}
 
-<form name="contact" method="POST" data-netlify="true">
+{/* <form name="contact" method="POST" data-netlify="true">
   <input type="hidden" name="form-name" value="contact" />
   <label>
     Name: <input type="text" name="name" />
@@ -438,7 +438,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   </label>
   <button type="submit">Submit</button>
 </form>
-       
+        */}
            
              
 

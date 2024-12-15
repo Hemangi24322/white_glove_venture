@@ -70,25 +70,12 @@ export default function GetInTouch() {
               </CardHeader>
               <CardContent>
 
-              <form name="startup-form" data-netlify="true" hidden>
-        <input type="text" name="startup-name" />
-        <input type="text" name="funding-stage" />
-        <input type="text" name="market-focus" />
-        <input type="email" name="email" />
-        <textarea name="startup-message"></textarea>
-      </form>
-      <form name="vc-form" data-netlify="true" hidden>
-        <input type="text" name="vc-name" />
-        <input type="text" name="investment-stage" />
-        <input type="text" name="sector-focus" />
-        <input type="text" name="deal-size" />
-        <textarea name="vc-message"></textarea>
-      </form>
+              
 
 
-                <form  className="space-y-4" name="startup-form" method="POST" data-netlify="true">
+                <form  className="space-y-4" name="startup-form" >
                 
-                <input type="hidden" name="form-name" value="startup-form" />
+                <input  name="form-name" value="startup-form" />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="startup-name">Startup Name</Label>
@@ -160,8 +147,8 @@ export default function GetInTouch() {
               </CardHeader>
               <CardContent>
 
-                <form  className="space-y-4"name="vc-form" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="vc-form" />
+                <form  className="space-y-4"name="vc-form" >
+                <input  name="form-name" value="vc-form" />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="vc-name">VC Firm Name</Label>
