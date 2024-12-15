@@ -65,10 +65,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    swcMinify: true, // Canary versions often require experimental configurations here.
-  },
-  output: 'standalone', // Retain standalone output for Netlify deployment or serverless setups.
   images: {
     domains: [], // Add any external image domains if needed.
     dangerouslyAllowSVG: true,
