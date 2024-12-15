@@ -90,11 +90,9 @@ const nextConfig = {
     });
 
     if (process.env.NETLIFY) {
-      config.plugins.push(
-        new (require('@netlify/plugin-nextjs'))()
-      );
+      const netlifyPlugin = import('@netlify/plugin-nextjs');
+      config.plugins.push(netlifyPlugin());
     }
-
     return config;
   },
 };
