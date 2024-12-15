@@ -112,7 +112,7 @@ export default function GetInTouch() {
       </form>
 
 
-                <form onSubmit={handleSubmit} className="space-y-4" name="startup-form" method="POST" data-netlify="true">
+                <form  className="space-y-4" name="startup-form" method="POST" data-netlify="true">
                 
                 <input type="hidden" name="form-name" value="startup-form" />
                   <div className="grid grid-cols-2 gap-4">
@@ -186,7 +186,7 @@ export default function GetInTouch() {
               </CardHeader>
               <CardContent>
 
-                <form onSubmit={handleSubmit} className="space-y-4"name="vc-form" method="POST" data-netlify="true">
+                <form  className="space-y-4"name="vc-form" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="vc-form" />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">

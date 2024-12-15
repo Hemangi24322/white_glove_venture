@@ -413,28 +413,25 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </div>
             </form> */}
 
-<form name="contact" data-netlify="true" hidden>
+<form name="contact" data-netlify="true" method="POST " netlify-honeypot="bot-field">
+<h3 className="text-xl font-semibold text-white">Stay Updated</h3>
+<div className="flex gap-2">
+
+  <p hidden><label>don't fill this form <input name="bot-field"></input></label> </p>
         <input type="email" name="email" />
+
+        <Input type="email"  placeholder="Enter your email"
+                  className="flex-1 bg-black border-gray-800 text-white placeholder-gray-500" name="email" />
+               <Button type="submit"  className="bg-white text-black hover:bg-gray-200 whitespace-nowrap"> 
+               Subscribe
+               </Button>
+        </div>
       </form>
 
-          <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4 max-w-md">
-                <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
-              <div className="flex gap-2">
-
-                    <Input type="email"  placeholder="Enter your email"
-                  className="flex-1 bg-black border-gray-800 text-white placeholder-gray-500" name="email" />
-               <Button type="submit" disabled={isSubmitting} className="bg-white text-black hover:bg-gray-200 whitespace-nowrap"> 
-               Subscribe
-
-               </Button>
-               
-               {message && (
-            <div className={`text-sm ${message.includes('successful') ? 'text-green-500' : 'text-red-500'}`}>
-               {message}
-              </div>
-            )}
-              </div>
-           </form>
+          
+             
+           
+             
 
           </div>
           <div className="lg:block relative">
