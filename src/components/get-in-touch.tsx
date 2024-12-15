@@ -42,33 +42,7 @@ export default function GetInTouch() {
   }, [])
 
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setIsSubmitting(true)
-
-    const form = event.target as HTMLFormElement
-    const formData = new FormData(form)
-
-    try {
-      const response = await fetch('/api/form', {
-        method: 'POST',
-        body: new URLSearchParams(formData as any).toString()
-      })
-
-      if (response.ok) {
-        // Handle successful submission
-        console.log('Thank you for your submission! We have received your details and will get back to you soon.')
-        form.reset()
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    } finally {
-      setIsSubmitting(false)
-    }
-  };
-
+  
   return (
     
     <section

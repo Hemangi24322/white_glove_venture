@@ -413,7 +413,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </div>
             </form> */}
 
-<form name="contact" data-netlify="true" method="POST " netlify-honeypot="bot-field">
+{/* <form name="contact" data-netlify="true" method="POST " netlify-honeypot="bot-field">
 <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
 <div className="flex gap-2">
 
@@ -426,7 +426,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                Subscribe
                </Button>
         </div>
-      </form>
+      </form> */}
 
           
              

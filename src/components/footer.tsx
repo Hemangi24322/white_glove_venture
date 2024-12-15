@@ -283,7 +283,7 @@ export default function Footer() {
       </form>
 
 
-            <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4 max-w-md">
+            {/* <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4 max-w-md">
             <input type="hidden" name="form-name" value="contact" />
               <div className="flex gap-2">
 
@@ -300,7 +300,7 @@ export default function Footer() {
               </div>
             )}
               </div>
-           </form>
+           </form> */}
 
 
           </div>
