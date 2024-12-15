@@ -71,17 +71,22 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
+  },
+  eslint: {
     ignoreDuringBuilds: true,
   },
-  webpack: (config) => {
-
-    if (process.env.NETLIFY) {
-      const netlifyPlugin = require('@netlify/plugin-nextjs');
-      config.plugins.push(netlifyPlugin());
+  webpack: (config, { isServer }) => {
+    // Only load the plugin on the server side (Netlify)
+    if (isServer && process.env.NETLIFY) {
+      // Dynamically import the Netlify Next.js plugin
+      const netlifyPluginPromise = import('@netlify/plugin-nextjs');
+      netlifyPluginPromise.then((netlifyPlugin) => {
+        config.plugins.push(netlifyPlugin.default());
+      }).catch((error) => {
+        console.error('Failed to load @netlify/plugin-nextjs:', error);
+      });
     }
+
     config.module.rules.push({
       test: /\.ico$/,
       use: [
@@ -99,3 +104,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
