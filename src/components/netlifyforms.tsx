@@ -145,146 +145,158 @@ const NetlifyForm: React.FC = () => {
   };
 
   return (
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      style={{
-        maxWidth: "500px",
-        margin: "0 auto",
-        padding: "30px",
-        backgroundColor: "#f5f5f5",
-        borderRadius: "8px",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <input type="hidden" name="form-name" value="contact" />
+    // <form
+    //   name="contact"
+    //   method="POST"
+    //   data-netlify="true"
+    //   data-netlify-honeypot="bot-field"
+    //   style={{
+    //     maxWidth: "500px",
+    //     margin: "0 auto",
+    //     padding: "30px",
+    //     backgroundColor: "#f5f5f5",
+    //     borderRadius: "8px",
+    //     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    //   }}
+    // >
+    //   <input type="hidden" name="form-name" value="contact" />
 
-      {/* Hidden field for bot prevention */}
-      <div style={{ display: "none" }}>
-        <input name="bot-field" onChange={handleChange} />
-      </div>
+    //   {/* Hidden field for bot prevention */}
+    //   <div style={{ display: "none" }}>
+    //     <input name="bot-field" onChange={handleChange} />
+    //   </div>
 
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          htmlFor="name"
-          style={{
-            display: "block",
-            fontSize: "16px",
-            marginBottom: "8px",
-            color: "#333",
-            fontWeight: "600",
-          }}
-        >
-          Name:
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          style={{
-            width: "100%",
-            padding: "12px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            boxSizing: "border-box",
-            transition: "border-color 0.3s",
-          }}
-          placeholder="Your Name"
-        />
-      </div>
+    //   <div style={{ marginBottom: "20px" }}>
+    //     <label
+    //       htmlFor="name"
+    //       style={{
+    //         display: "block",
+    //         fontSize: "16px",
+    //         marginBottom: "8px",
+    //         color: "#333",
+    //         fontWeight: "600",
+    //       }}
+    //     >
+    //       Name:
+    //     </label>
+    //     <input
+    //       type="text"
+    //       id="name"
+    //       name="name"
+    //       value={formData.name}
+    //       onChange={handleChange}
+    //       required
+    //       style={{
+    //         width: "100%",
+    //         padding: "12px",
+    //         fontSize: "16px",
+    //         border: "1px solid #ccc",
+    //         borderRadius: "4px",
+    //         boxSizing: "border-box",
+    //         transition: "border-color 0.3s",
+    //       }}
+    //       placeholder="Your Name"
+    //     />
+    //   </div>
 
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          htmlFor="email"
-          style={{
-            display: "block",
-            fontSize: "16px",
-            marginBottom: "8px",
-            color: "#333",
-            fontWeight: "600",
-          }}
-        >
-          Email:
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          style={{
-            width: "100%",
-            padding: "12px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            boxSizing: "border-box",
-            transition: "border-color 0.3s",
-          }}
-          placeholder="Your Email"
-        />
-      </div>
+    //   <div style={{ marginBottom: "20px" }}>
+    //     <label
+    //       htmlFor="email"
+    //       style={{
+    //         display: "block",
+    //         fontSize: "16px",
+    //         marginBottom: "8px",
+    //         color: "#333",
+    //         fontWeight: "600",
+    //       }}
+    //     >
+    //       Email:
+    //     </label>
+    //     <input
+    //       type="email"
+    //       id="email"
+    //       name="email"
+    //       value={formData.email}
+    //       onChange={handleChange}
+    //       required
+    //       style={{
+    //         width: "100%",
+    //         padding: "12px",
+    //         fontSize: "16px",
+    //         border: "1px solid #ccc",
+    //         borderRadius: "4px",
+    //         boxSizing: "border-box",
+    //         transition: "border-color 0.3s",
+    //       }}
+    //       placeholder="Your Email"
+    //     />
+    //   </div>
 
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          htmlFor="message"
-          style={{
-            display: "block",
-            fontSize: "16px",
-            marginBottom: "8px",
-            color: "#333",
-            fontWeight: "600",
-          }}
-        >
-          Message:
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          style={{
-            width: "100%",
-            padding: "12px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            boxSizing: "border-box",
-            resize: "none",
-            height: "120px",
-            transition: "border-color 0.3s",
-          }}
-          placeholder="Your Message"
-        ></textarea>
-      </div>
+    //   <div style={{ marginBottom: "20px" }}>
+    //     <label
+    //       htmlFor="message"
+    //       style={{
+    //         display: "block",
+    //         fontSize: "16px",
+    //         marginBottom: "8px",
+    //         color: "#333",
+    //         fontWeight: "600",
+    //       }}
+    //     >
+    //       Message:
+    //     </label>
+    //     <textarea
+    //       id="message"
+    //       name="message"
+    //       value={formData.message}
+    //       onChange={handleChange}
+    //       required
+    //       style={{
+    //         width: "100%",
+    //         padding: "12px",
+    //         fontSize: "16px",
+    //         border: "1px solid #ccc",
+    //         borderRadius: "4px",
+    //         boxSizing: "border-box",
+    //         resize: "none",
+    //         height: "120px",
+    //         transition: "border-color 0.3s",
+    //       }}
+    //       placeholder="Your Message"
+    //     ></textarea>
+    //   </div>
 
-      <button
-        type="submit"
-        style={{
-          width: "100%",
-          padding: "14px",
-          fontSize: "18px",
-          color: "#fff",
-          backgroundColor: "#007bff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-          transition: "background-color 0.3s",
-        }}
-        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#0056b3")}
-        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#007bff")}
-      >
-        Submit
-      </button>
-    </form>
+    //   <button
+    //     type="submit"
+    //     style={{
+    //       width: "100%",
+    //       padding: "14px",
+    //       fontSize: "18px",
+    //       color: "#fff",
+    //       backgroundColor: "#007bff",
+    //       border: "none",
+    //       borderRadius: "4px",
+    //       cursor: "pointer",
+    //       transition: "background-color 0.3s",
+    //     }}
+    //     onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#0056b3")}
+    //     onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#007bff")}
+    //   >
+    //     Submit
+    //   </button>
+    // </form>
+
+<form  name="contact" >
+  <p>
+    <label>Name <input type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>Email <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
   );
 };
 
