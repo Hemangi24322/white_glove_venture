@@ -581,9 +581,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import ContactForm from './contactform';
-import NetlifyForm from './netlifyforms';
 
+import NetlifyForm from './netlifyforms';
+import ContactForm from './formspree';
 
 export default function HeroSection() {
   const [email, setEmail] = useState('');
@@ -725,6 +725,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             </div>
 
 
+  <ContactForm/>
+{/* 
              <form 
              name="subscribe"
              method="POST"
@@ -735,7 +737,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
               <div className="flex gap-2">
               <input type="hidden" name="form-name" value="subscribe" />
-                  {/* Hidden field to prevent bots */}
+                 
               <div style={{ display: 'none' }}>
                   <input name="bot-field" />
               </div>
@@ -766,7 +768,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               {message && (
               <p className="text-white mt-3">{message}</p>
                           )}
-            </form> 
+            </form>  */}
 
 {/* <form name="contact" data-netlify="true" method="POST " netlify-honeypot="bot-field">
 <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
