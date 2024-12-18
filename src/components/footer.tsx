@@ -45,7 +45,7 @@ export default function Footer() {
   return (
     <footer
       id="contact-section"
-      className="bg-gray-950 text-gray-400 py-12 px-4 md:px-6"
+      className="bg-[#1B1E27] text-white py-12"
     >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -212,8 +212,10 @@ export default function Footer() {
                       <h5 className="font-semibold mb-2">LinkedIn:</h5>
                       <ul className="list-disc pl-5 space-y-1">
                         <li><a href="https://www.linkedin.com/company/whiteglove-ventures/?" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">WGV Profile</a></li>
-                        <li><a href="https://www.linkedin.com/dummy-contact1-profile" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Point of Contact 1</a></li>
-                        <li><a href="https://www.linkedin.com/dummy-contact2-profile" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Point of Contact 2</a></li>
+                        <li><a href="https://www.linkedin.com/in/pawani-reddy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+
+" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Point of Contact 1</a></li>
+                        <li><a href="https://www.linkedin.com/in/shravani-reddy-b61937273?" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Point of Contact 2</a></li>
                       </ul>
                     </div>
                     <div>
@@ -221,15 +223,15 @@ export default function Footer() {
                       <ul className="space-y-2">
                         <li className="flex items-center">
                           <Twitter className="h-5 w-5 mr-2" />
-                          <a href="https://www.twitter.com/dummy-profile" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Twitter</a>
+                          <a href="https://x.com/whiteglove_v/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Twitter</a>
                         </li>
                         <li className="flex items-center">
                           <Mail className="h-5 w-5 mr-2" />
-                          <a href="mailto:dummyemail@example.com" className="text-blue-600 hover:underline">Email</a>
+                          <a href="mailto:Contact@whiteglove.ventures" className="text-blue-600 hover:underline">Email</a>
                         </li>
                         <li className="flex items-center">
                           <Send className="h-5 w-5 mr-2" />
-                          <a href="https://t.me/dummy-profile" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Telegram</a>
+                          <a  target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Telegram</a>
                         </li>
                       </ul>
                     </div>
@@ -281,8 +283,7 @@ export default function Footer() {
                 <Twitter className="h-6 w-6 hover:text-white transition-colors" />
               </a>
               <a
-                href="mailto:dummyemail@example.com
-"
+                href="mailto:Contact@whiteglove.ventures"
                 aria-label="Email"
               >
                 <Mail className="h-6 w-6 hover:text-white transition-colors" />

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import axios from 'axios'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,6 +19,17 @@ export default function VCForm() {
     'deal-size': '',
     'vc-message': ''
   })
+
+  useEffect(() => {
+    if (status === 'submitted' || status === 'error') {
+      const timer = setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 3000); // 3 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleServerResponse = (ok: boolean, msg: string) => {
     setStatus(ok ? 'submitted' : 'error')

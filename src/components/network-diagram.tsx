@@ -1231,7 +1231,7 @@ export default function NetworkDiagram() {
             </text>
           </svg>
         </div>
-        <div className="w-1/4 pr-4 space-y-4 overflow-y-auto border border-gray-300 bg-gray-50">
+        <div className="w-1/4  border border-gray-300 rounded-lg p-6 space-y-6 overflow-y-auto">
           <h3 className="text-2xl font-bold tracking-tight mb-6">
             Entity Components Overview
           </h3>

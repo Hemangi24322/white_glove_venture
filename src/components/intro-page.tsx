@@ -351,7 +351,7 @@ export default function IntroSection() {
   return (
     <div className="container mx-auto px-4 py-8 space-y-16">
       <section className="space-y-4">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white mb-8">
           Empowering innovations, connecting visionaries
         </h1>
         <p className="text-xl text-gray-400">
@@ -373,7 +373,7 @@ export default function IntroSection() {
         <div className="flex justify-between items-center">
           {['Ecosystem Connect ', 'Data driven Insights', 'Tech support'].map(
             (partner) => (
-              <div key={partner} className="text-lg font-semibold">
+              <div key={partner} className="text-sm text-gray-500">
                 {partner}
               </div>
             )

@@ -10,13 +10,14 @@ import Footer from '@/components/footer';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-black via-zinc-900 to-zinc-700">
       <main className="flex-grow">
         <HeaderMenuBar />
         <div className="container mx-auto px-4 lg:px-8">
-          <section className="flex py-12">
-            <HeroSection />
-          </section>
+          
+        <section className="flex">
+        <HeroSection />
+      </section>
 
           <section className="py-12">
             <IntroPage />
