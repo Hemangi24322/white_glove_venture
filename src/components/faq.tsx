@@ -71,7 +71,7 @@ export default function ComponentFAQ() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
+    <div className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10 rounded-2xl border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
     
       <h2 className="text-3xl font-bold text-center mb-8">
         Have questions?! We have got you!
@@ -102,7 +102,7 @@ export default function ComponentFAQ() {
           </div>
         </div>
         <div className="md:w-2/3">
-          <Tabs defaultValue="vc" className="w-full">
+          <Tabs defaultValue="vc" className="w-full p-4  ">
             <TabsList className="grid w-full grid-cols-2 mb-4">
               <TabsTrigger value="vc">For VCs</TabsTrigger>
               <TabsTrigger value="startup">For Startups</TabsTrigger>

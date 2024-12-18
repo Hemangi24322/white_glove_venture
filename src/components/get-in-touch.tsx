@@ -63,10 +63,10 @@ export default function GetInTouch() {
     
     <section
       id="get-in-touch"
-      className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10"
+      className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-semibold tracking-tight text-black mb-8">
+      <div className="max-w-4xl p-4 mx-auto">
+        <h2 className="text-3xl pfont-semibold tracking-tight text-black mb-8">
           Get in Touch
         </h2>
 

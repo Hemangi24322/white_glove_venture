@@ -1169,8 +1169,8 @@ export default function NetworkDiagram() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-white text-black p-6 pr-8">
-      <h2 className="text-3xl font-bold text-center mb-2">
+    <div className="w-full min-h-screen bg-white text-black p-6 pr-8 rounded-2xl border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+      <h2 className=" text-3xl font-bold text-center mb-2 ">
         Data-Driven Connections That Move Markets
       </h2>
       <p className="text-center text-gray-600 mb-6">
@@ -1178,7 +1178,7 @@ export default function NetworkDiagram() {
       </p>
       <div className="flex h-[calc(100vh-200px)]">
         <div className="w-1/4  border border-gray-300 rounded-lg p-6 space-y-6 overflow-y-auto">
-          <h3 className="text-2xl font-bold tracking-tight mb-6">
+          <h3 className="text-2xl font-bold tracking-tight mb-6 ">
             Our Methodologies and Approaches
           </h3>
           <p className="text-sm text-gray-600 mb-6">
@@ -1232,7 +1232,7 @@ export default function NetworkDiagram() {
           </svg>
         </div>
         <div className="w-1/4  border border-gray-300 rounded-lg p-6 space-y-6 overflow-y-auto">
-          <h3 className="text-2xl font-bold tracking-tight mb-6">
+          <h3 className="text-2xl font-bold tracking-tight mb-6 ">
             Entity Components Overview
           </h3>
           {/* {selectedNode ? (

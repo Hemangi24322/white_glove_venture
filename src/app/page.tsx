@@ -7,10 +7,10 @@ import FAQ from '@/components/faq';
 import Quiz from '@/components/quiz';
 import GetInTouch from '@/components/get-in-touch';
 import Footer from '@/components/footer';
-
+//className="flex min-h-screen flex-col bg-gradient-to-b from-black via-zinc-900 to-zinc-700"
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-black via-zinc-900 to-zinc-700">
+    <div className="min-h-screen w-full bg-gradient-to-b from-black via-neutral-800 via-neutral-400 to-white">
       <main className="flex-grow">
         <HeaderMenuBar />
         <div className="container mx-auto px-4 lg:px-8">

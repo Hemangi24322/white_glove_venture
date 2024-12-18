@@ -35,17 +35,17 @@ export default function RadioComponent() {
   return (
     <section id='help'>
       
-<div className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
-    <Card  className="w-full max-w-4xl mx-auto bg-white text-black">
+<div className="w-full max-w-7xl mx-auto px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10 rounded-2xl border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+    <Card  className="w-full max-w mx-auto bg-white text-black">
       <CardHeader>
         <CardTitle className="text-2xl font-bold">
           How can White Glove Ventures help you?
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="flex-1">
-            <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="flex flex-col md:flex-row gap-8 h-full">
+          <div className="flex-1 flex flex-col">
+            <form onSubmit={handleSubmit} className="space-y-6 h-full">
               <RadioGroup value={userType} onValueChange={setUserType}>
                 <div className="mb-4">
                   <Label className="text-lg font-semibold">I am a:</Label>
@@ -85,9 +85,9 @@ export default function RadioComponent() {
             </form>
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 h-full">
             {showResults ? (
-              <div className="bg-gray-100 p-6 rounded-lg h-full">
+              <div className="bg-gray-100 p-6 rounded-lg h-full flex flex-col">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   How WGV Can Help You:
                 </h3>
