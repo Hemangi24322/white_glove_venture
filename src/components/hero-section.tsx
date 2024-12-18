@@ -729,8 +729,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
             <div className="relative">
               <div className="overflow-hidden h-[600px]">
-                <div className="animate-scroll flex">
-                  <div className="flex flex-col gap-4 mr-4">
+              <div className="flex">
+              <div className="flex flex-col gap-4 mr-4 animate-scroll-up">
                     {startups.map((startup, index) => (
                       <Card
                         key={index}
@@ -771,7 +771,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                       </Card>
                     ))}
                   </div>
-                  <div className="flex flex-col gap-4 mt-8">
+                  <div className="flex flex-col gap-4 mt-8 animate-scroll-down">
                     {startups.map((startup, index) => (
                       <Card
                         key={index}
@@ -825,9 +825,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           66% { transform: translate(-50%, -50%) scale(0.9); }
           100% { transform: translate(-50%, -50%) scale(1); }
         }
-        @keyframes scroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(calc(-372px * 6)); }
+        @keyframes scrollUp {
+          0% { transform: translateY(0%); }
+          100% { transform: translateY(-100%); }
+        }
+        @keyframes scrollDown {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(0); }
         }
         .animate-blob {
           animation: blob 7s infinite;
@@ -838,8 +842,11 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         .animation-delay-4000 {
           animation-delay: 4s;
         }
-        .animate-scroll {
-          animation: scroll 25s linear infinite;
+       .animate-scroll-up {
+          animation: scrollUp 25s linear infinite;
+        }
+        .animate-scroll-down {
+          animation: scrollDown 25s linear infinite;
         }
         .animate-scroll:hover {
           animation-play-state: paused;
