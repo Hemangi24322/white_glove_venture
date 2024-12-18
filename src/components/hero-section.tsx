@@ -724,81 +724,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </Badge>
             </div>
 
-
-  <ContactForm/>
-{/* 
-             <form 
-             name="subscribe"
-             method="POST"
-             data-netlify="true"
-             data-netlify-honeypot="bot-field"
-             
-             onSubmit={handleSubmit} className="space-y-4 max-w-md">
-              <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
-              <div className="flex gap-2">
-              <input type="hidden" name="form-name" value="subscribe" />
-                 
-              <div style={{ display: 'none' }}>
-                  <input name="bot-field" />
-              </div>
-                <Input
-                  className="flex-1 bg-black border-white border-5px text-white font-bold placeholder-gray-200"
-                  type='text'
-                  placeholder='Enter your name'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  
-                />
-                <Input
-                  className="flex-1 bg-black border-white border-5px text-white font-bold placeholder-gray-200"
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  
-                />
-                <Button
-                  type="submit"
-                  className="bg-white text-black hover:bg-gray-200 whitespace-nowrap"
-                  
-                >
-                  Subscribe
-                </Button>
-              </div>
-              {message && (
-              <p className="text-white mt-3">{message}</p>
-                          )}
-            </form>  */}
-
-{/* <form name="contact" data-netlify="true" method="POST " netlify-honeypot="bot-field">
-<h3 className="text-xl font-semibold text-white">Stay Updated</h3>
-<div className="flex gap-2">
-
-  <p hidden><label>don't fill this form <input name="bot-field"></input></label> </p>
-        <input type="email" name="email" />
-
-        <Input type="email"  placeholder="Enter your email"
-                  className="flex-1 bg-black border-gray-800 text-white placeholder-gray-500" name="email" />
-               <Button type="submit"  className="bg-white text-black hover:bg-gray-200 whitespace-nowrap"> 
-               Subscribe
-               </Button>
-        </div>
-      </form> */}
-
-{/* <form name="contact" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="contact" />
-  <label>
-    Name: <input type="text" name="name" />
-  </label>
-  <label>
-    Email: <input type="email" name="email" />
-  </label>
-  <button type="submit">Submit</button>
-</form>
-        */}
-           
-          
-    
+           <div className="w-full">
+            <ContactForm/>
+           </div>
 
           </div>
           <div className="lg:block relative">

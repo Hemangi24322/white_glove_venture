@@ -32,7 +32,7 @@ export default function ContactForm() {
     try {
       const response = await axios({
         method: 'POST',
-        url: process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT,
+        url: process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT_EMAIL,
         data: { email }
       })
       handleServerResponse(true, 'Thank you, your subscription has been submitted.')
@@ -42,15 +42,14 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-gray-950 border-gray-800">
-      <CardHeader>
-        <CardTitle className="text-2xl font-semibold tracking-tight text-white">Subscribe to Our Newsletter</CardTitle>
-        <CardDescription className="text-gray-400">Stay updated with our latest insights and opportunities.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleOnSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-sm font-medium text-gray-300">Email</Label>
+    <div className="w-full">
+      
+        <h2 className="text-2xl font-semibold tracking-tight text-white mb-4">Stay updated</h2>
+      
+      
+        <form onSubmit={handleOnSubmit}  className="w-full max-w-[70%]">
+          <div className="grid grid-cols-[3fr_1fr] gap-2">
+          
             <Input
               id="email"
               type="email"
@@ -58,21 +57,22 @@ export default function ContactForm() {
               onChange={handleOnChange}
               required
               value={email}
-              className="bg-gray-900 border-gray-700 text-white placeholder-gray-500"
+            className="flex-1 h-10 text-base bg-gray-900/50 border-gray-800 text-white placeholder-gray-400"
               placeholder="Enter your email"
             />
-          </div>
+          
           <Button 
             type="submit" 
             disabled={status === 'submitting'}
-            className="w-full bg-white text-black hover:bg-gray-200 transition-colors"
+          className="h-10 px-4 text-base font-medium bg-white text-black hover:bg-gray-200 transition-colors whitespace-nowrap"
           >
             {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
           </Button>
+          </div>
         </form>
         {status === 'error' && <p className="mt-4 text-red-500 text-sm">{message}</p>}
         {status === 'submitted' && <p className="mt-4 text-green-500 text-sm">{message}</p>}
-      </CardContent>
-    </Card>
+      
+    </div>
   )
 }

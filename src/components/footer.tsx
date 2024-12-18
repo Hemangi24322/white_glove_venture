@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog"
 
 import { Linkedin, Twitter, Mail,Send} from 'lucide-react';
+import ContactForm from './formspree';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -244,36 +245,13 @@ export default function Footer() {
 
           {/* Newsletter Signup */}
           <div className="md:col-span-2">
-            <h4 className="text-xl font-semibold tracking-tight text-white mb-4">
-              Stay Updated
-            </h4>
-            <p className="mb-4 text-sm">
+           
+            {/* <p className="mb-4 text-sm">
               Sign up for exclusive deals and market insights.
-            </p>
-
-            {/* <form name="contact" data-netlify="true" hidden>
-        <input type="email" name="email" />
-      </form> */}
-
-
-            {/* <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-4 max-w-md">
-            <input type="hidden" name="form-name" value="contact" />
-              <div className="flex gap-2">
-
-                    <Input type="email"  placeholder="Enter your email"
-                  className="flex-1 bg-black border-gray-800 text-white placeholder-gray-500" name="email" />
-               <Button type="submit" disabled={isSubmitting} className="bg-white text-black hover:bg-gray-200 whitespace-nowrap"> 
-               Subscribe
-
-               </Button>
-               
-               {message && (
-            <div className={`text-sm ${message.includes('successful') ? 'text-green-500' : 'text-red-500'}`}>
-               {message}
-              </div>
-            )}
-              </div>
-           </form> */}
+            </p> */}
+           <div>
+            <ContactForm/>
+           </div>
 
 
           </div>

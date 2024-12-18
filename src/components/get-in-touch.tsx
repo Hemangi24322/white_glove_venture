@@ -21,6 +21,8 @@ import {
 } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageCircle } from 'lucide-react';
+import  StartupForm  from './startupform';
+import VCForm from './vcform';
 
 
 export default function GetInTouch() {
@@ -61,145 +63,11 @@ export default function GetInTouch() {
           </TabsList>
 
           <TabsContent value="startup">
-            <Card>
-              <CardHeader>
-                <CardTitle>Startup Application</CardTitle>
-                <CardDescription>
-                  Tell us about your startup and how we can help.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-
-              
-
-
-                <form  className="space-y-4" name="startup-form" >
-                
-                <input  name="form-name" value="startup-form" />
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="startup-name">Startup Name</Label>
-                      <Input
-                        id="startup-name"
-                         name="startup-name"
-                        placeholder="Enter your startup name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="funding-stage">
-                        Current Funding Stage
-                      </Label>
-                      <Select name="funding-stage">
-                        <SelectTrigger id="funding-stage">
-                          <SelectValue placeholder="Select stage" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="pre-seed">Pre-seed</SelectItem>
-                          <SelectItem value="seed">Seed</SelectItem>
-                          <SelectItem value="series-a">Series A</SelectItem>
-                          <SelectItem value="series-b">Series B+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="market-focus">Market Focus</Label>
-                    <Input
-                      id="market-focus"
-                       name="market-focus"
-                      placeholder="E.g., FinTech, HealthTech, AI"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Company Website</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="www.yourcompanyname.com"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="startup-message">
-                      Project's current stage
-                    </Label>
-                    <Textarea
-                      id="startup-message"
-                       name="startup-message"
-                      placeholder="Tell us about your project&apos current stage"
-                    />
-                  </div>
-                  <Button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit Inquiry'}</Button>
-                </form>
-
-
-              </CardContent>
-            </Card>
+           <StartupForm/>
           </TabsContent>
 
           <TabsContent value="vc">
-            <Card>
-              <CardHeader>
-                <CardTitle>VC Inquiry</CardTitle>
-                <CardDescription>
-                  Tell us about your VC firm and investment interests.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-
-                <form  className="space-y-4"name="vc-form" >
-                <input  name="form-name" value="vc-form" />
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="vc-name">VC Firm Name</Label>
-                      <Input
-                        id="vc-name"
-                        name="vc-name"
-                        placeholder="Enter your VC firm name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="investment-stage">
-                        Investment Stage Focus
-                      </Label>
-                      <Select name="investment-stage">
-                        <SelectTrigger id="investment-stage" >
-                          <SelectValue placeholder="Select stage" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="seed">Seed</SelectItem>
-                          <SelectItem value="early">Early Stage</SelectItem>
-                          <SelectItem value="growth">Growth Stage</SelectItem>
-                          <SelectItem value="late">Late Stage</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="sector-focus">Sector Focus</Label>
-                    <Input
-                      id="sector-focus"
-                      name="sector-focus"
-                      placeholder="E.g., Enterprise SaaS, Consumer Tech"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="deal-size" >Typical Deal Size</Label>
-                    <Input id="deal-size" name="deal-size"  placeholder="E.g., $500K - $2M" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="vc-message">Additional Information</Label>
-                    <Textarea
-                      id="vc-message"  name="vc-message"
-                      placeholder="Tell us more about your investment thesis or any specific requests"
-                    />
-                  </div>
-                  <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
-        </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <VCForm/>
           </TabsContent>
         </Tabs>
 
