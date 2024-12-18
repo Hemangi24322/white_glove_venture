@@ -1177,7 +1177,7 @@ export default function NetworkDiagram() {
         WGV&apos;s ecosystem: Startups, VCs, and support networks interconnected for success
       </p>
       <div className="flex h-[calc(100vh-200px)]">
-        <div className="w-1/4 pr-4 pl-6 space-y-4 overflow-x-visible overflow-y-auto border border-gray-300 bg-gray-50">
+        <div className="w-1/4  border border-gray-300 rounded-lg p-6 space-y-6 overflow-y-auto">
           <h3 className="text-2xl font-bold tracking-tight mb-6">
             Our Methodologies and Approaches
           </h3>
