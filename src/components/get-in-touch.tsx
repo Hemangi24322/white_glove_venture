@@ -1,6 +1,6 @@
 'use client';
 
-import { useState ,useEffect} from 'react';
+import React, { useState ,useEffect} from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,38 +10,52 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageCircle } from 'lucide-react';
 import  StartupForm  from './startupform';
 import VCForm from './vcform';
 
 
+
 export default function GetInTouch() {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('startup')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [activeTab, setActiveTab] =  useState<'startup' | 'vc'>('startup');
 
   
+  // useEffect(() => {
+  
+  //   const handleSetActiveTab = (event: CustomEvent<string>) => {
+  //   //   console.log('Custom event received:', event.detail);
+  //   //   if (event.detail === 'startup' || event.detail === 'vc') {
+  //   //     setActiveTab(event.detail as 'startup' | 'vc');
+  //   //   }
+  //   // };
+
+  //   // document.addEventListener('setActiveTab', handleSetActiveTab as EventListener);
+
+  //   // return () => {
+  //   //   document.removeEventListener('setActiveTab', handleSetActiveTab as EventListener);
+  //   // };
+   
+  // }, [])
+
   useEffect(() => {
     const handleSetActiveTab = (event: CustomEvent<string>) => {
-      setActiveTab(event.detail)
-    }
+      console.log('Custom event received:', event.detail);
+      if (event.detail === 'startup' || event.detail === 'vc') {
+        console.log('Setting active tab to:', event.detail);
+        setActiveTab(event.detail as 'startup' | 'vc');
+      }
+    };
 
-    document.addEventListener('setActiveTab', handleSetActiveTab as EventListener)
+    document.addEventListener('setActiveTab', handleSetActiveTab as EventListener);
 
     return () => {
-      document.removeEventListener('setActiveTab', handleSetActiveTab as EventListener)
-    }
-  }, [])
+      document.removeEventListener('setActiveTab', handleSetActiveTab as EventListener);
+    };
+  }, []);
+
+  console.log('GetInTouch rendered, activeTab:', activeTab);
 
 
   
@@ -56,7 +70,7 @@ export default function GetInTouch() {
           Get in Touch
         </h2>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
+        <Tabs value={activeTab}  onValueChange={(value: string) => setActiveTab(value as 'startup' | 'vc')}  className="mb-8">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="startup">For Startups</TabsTrigger>
             <TabsTrigger value="vc">For VCs</TabsTrigger>
@@ -72,7 +86,7 @@ export default function GetInTouch() {
         </Tabs>
 
         {/* Live Chat Feature */}
-        <div className="fixed bottom-4 right-4">
+        {/* <div className="fixed bottom-4 right-4">
           <Button
             variant="secondary"
             size="icon"
@@ -96,7 +110,7 @@ export default function GetInTouch() {
               </CardContent>
             </Card>
           )}
-        </div>
+        </div> */}
       </div>
     </section>
   );

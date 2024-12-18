@@ -293,7 +293,7 @@
 
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import React,{ useState, useEffect, useRef, useMemo } from 'react';
 import {
   Card,
   CardContent,
@@ -541,7 +541,7 @@ export default function ValueDrivenServices() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStep((prevStep) => {
-        const nextStep = (prevStep + 1) % journeySteps[activeTab].length;
+        const nextStep = (prevStep + 1) % (journeySteps[activeTab]?.length ?? 0);
         setCurrentMiniStep(0);
         return nextStep;
       });
@@ -770,11 +770,11 @@ export default function ValueDrivenServices() {
                 {/* Horizontal line */}
                 <div className="absolute left-4 bottom-4 w-[calc(50%-1rem)] h-0.5 bg-blue-500" />
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${
-                    currentStep >= journeySteps[activeTab].length - 1
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200 text-gray-400'
-                  }`}
+                 className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  currentStep >= (journeySteps[activeTab]?.length ?? 0) - 1
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 text-gray-400'
+                }`}
                 >
                   <Check className="h-4 w-4" />
                 </div>

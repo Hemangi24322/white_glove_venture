@@ -576,7 +576,6 @@
 
 import { useState,useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
@@ -586,7 +585,6 @@ import ContactForm from './formspree';
 export default function HeroSection() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('')
-  const [name, setName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
@@ -676,17 +674,17 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-               variant="outline"
-               className="bg-white text-black hover:bg-gray-200 text-lg py-6 px-8"
-               onClick={() => {
-                 const getInTouchSection =
-                   document.getElementById('get-in-touch');
-                   if (getInTouchSection) {
-                     getInTouchSection.scrollIntoView({ behavior: 'smooth' });
-                     const event = new CustomEvent('setActiveTab', { detail: 'startup' });
-                     document.dispatchEvent(event);
-                   }
-               }}
+              variant="outline"
+              className="bg-white text-black hover:bg-gray-200 text-lg py-6 px-8"
+              onClick={() => {
+                console.log('Button clicked:', 'startup');
+                const getInTouchSection = document.getElementById('get-in-touch');
+                if (getInTouchSection) {
+                  getInTouchSection.scrollIntoView({ behavior: 'smooth' });
+                  const event = new CustomEvent('setActiveTab', { detail: 'startup' });
+                  document.dispatchEvent(event);
+                }
+              }}
               >
                 Join Acceleration Program
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -695,6 +693,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 variant="outline"
                 className="bg-white text-black hover:bg-gray-200 text-lg py-6 px-8"
                 onClick={() => {
+                  console.log('Button clicked:', 'vc');
                   const getInTouchSection =
                     document.getElementById('get-in-touch');
                     if (getInTouchSection) {
