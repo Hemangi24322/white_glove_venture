@@ -581,8 +581,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-
-import NetlifyForm from './netlifyforms';
 import ContactForm from './formspree';
 
 export default function HeroSection() {
@@ -665,6 +663,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     <section className="w-full py-20 md:py-32 bg-black overflow-hidden">
       <div className="container px-4 md:px-6">
         <div className="grid gap-16 lg:grid-cols-[1fr_500px] lg:gap-24 xl:gap-32 items-center">
+
           <div className="flex flex-col justify-center space-y-10">
             <div className="space-y-6">
               <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
@@ -723,11 +722,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 <Sparkles className="mr-2 h-5 w-5" /> Data-Driven Insights
               </Badge>
             </div>
-
-           <div className="w-full">
             <ContactForm/>
-           </div>
-
           </div>
           <div className="lg:block relative">
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
